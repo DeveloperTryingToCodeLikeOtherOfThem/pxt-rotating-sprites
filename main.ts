@@ -6,7 +6,7 @@ namespace rotateSprite {
 * @param speed rotation speed in degrees per frame, eg: 1
 */
     //% block="rotate $sprite by $speed degrees per frame"
-    //% sprite.shadow=variables_get
+    //% sprite.shadow=variables_get(mySprite)
     //% speed.min=1 speed.max=50
     //% help="docs/rotate"
     export function rotate(sprite: Sprite, speed: number = 1) {
