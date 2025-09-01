@@ -1,24 +1,24 @@
 //% block="rotate sprite"
 namespace rotateSprite {
-    //% block="rotate $sprite $speed"
-    //% sprite=variables_get(mySprite)
-    //% speed.max=50
-    //% speed.min=1 
+    /**
+* Rotates a sprite continuously on the screen.
+* @param sprite the sprite to rotate
+* @param speed rotation speed in degrees per frame, eg: 1
+*/
+    //% block="rotate $sprite by $speed degrees per frame"
+    //% sprite.shadow=variables_get
+    //% speed.min=1 speed.max=50
+    //% help="docs/rotate"
     export function rotate(sprite: Sprite, speed: number = 1) {
-        // Convert speed to radians per frame
         let angle = 0
         let w = sprite.image.width
         let h = sprite.image.height
         let cx = w / 2
         let cy = h / 2
 
-        // Small increment: 1 "unit" = ~1 degree
-        let radPerUnit = Math.PI / 180
-
         scene.createRenderable(1, (target: Image, camera: scene.Camera) => {
             let drawX = Math.floor(sprite.x - cx - camera.drawOffsetX)
             let drawY = Math.floor(sprite.y - cy - camera.drawOffsetY)
-
 
             for (let y = 0; y < h; y++) {
                 for (let x = 0; x < w; x++) {
@@ -32,10 +32,9 @@ namespace rotateSprite {
                     }
                 }
             }
+
             angle += speed * (Math.PI / 180)
         })
-
-        angle += speed * (Math.PI / 180)
     }
 
 }
