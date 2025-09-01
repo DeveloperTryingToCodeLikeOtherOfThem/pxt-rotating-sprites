@@ -8,6 +8,7 @@ namespace rotateSprite {
     //% block="rotate %sprite=variables_get(mySprite) by $speed degrees per frame"
     //% speed.min=1 speed.max=10
     export function rotate(sprite: Sprite, speed: number = 1) {
+       sprite.setFlag(SpriteFlag.Invisible, true)
         let angle = 0
         let w = sprite.image.width
         let h = sprite.image.height
